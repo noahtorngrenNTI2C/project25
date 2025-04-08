@@ -1,10 +1,23 @@
 / visar en quiz och dess frågor 
 
-h1 quiz namn 
+/ namnet på quizet
+h1 #{quiz['name']}
+h2 skapat av #{owner}
 
-h2 fråga ett 
+/ frågorna
 
-h2 fråga två 
+H2 Svara på frågorna nedan    
+form action="quiz_answer" method="POST"
+    -questions.each do |question|
+        p #{question["name"]}
+        input type="text" name="#{question["name"]}" placeholder="Skriv svar"
+    
+    input type="hidden" name="quiz_id" value="#{quiz['id']}"
+    p \n
+    input type="submit" value="Skicka in svar"
 
-h2 fråga tre 
+p = session
+
+
+
 
