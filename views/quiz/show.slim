@@ -6,17 +6,28 @@ h2 skapat av #{owner}
 
 / frågorna
 
-H2 Svara på frågorna nedan    
-form action="quiz_answer" method="POST"
+/session[("has_answered" + params[:quiz_id].to_s).to_sym] = true
+/session[questions[index]["name"].to_s.to_sym] = true
+-if session[("has_answered" + quiz["id"].to_s).to_sym] == true
+    h2 Du har svarat på frågorna 
+    p här är resultatet:
     -questions.each do |question|
-        p #{question["name"]}
-        input type="text" name="#{question["name"]}" placeholder="Skriv svar"
-    
-    input type="hidden" name="quiz_id" value="#{quiz['id']}"
-    p \n
-    input type="submit" value="Skicka in svar"
-
-p = session
+        -if session[question["name"].to_s.to_sym] == true
+            p #{question["name"]} 
+            p - Rätt svar
+        -else
+            p #{question["name"]} - Fel svar
+-else
+    H2 Svara på frågorna nedan    
+    form action="quiz_answer" method="POST"
+        -questions.each do |question|
+            p #{question["name"]}
+            input type="text" name="#{question["name"]}" placeholder="Skriv svar"
+        
+        input type="hidden" name="quiz_id" value="#{quiz['id']}"
+        p \n
+        input type="submit" value="Skicka in svar"
+/p = session
 
 
 

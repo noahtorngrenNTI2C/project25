@@ -1,0 +1,10 @@
+
+h1 här kan du ta bort ett av dina quiz
+
+- if quizes.length == 0
+    p Du har inga quiz att ta bort
+- else
+    - quizes.each do |quiz|
+        a href="/quiz/delete/#{quiz['id']}" #{quiz['name']}
+        p
+    

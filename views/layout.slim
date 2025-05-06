@@ -12,7 +12,7 @@ html lang="en"
             a href="/quiz/index" Alla quiz 
             -if session[:user_id]
                 a href="/quiz/edit" Redigera quiz 
-                a href="/quiz/delete" Ta bort quiz 
+                a href="/quiz/delete/nil" Ta bort quiz 
                 a href="/logout" logga ut
             -else
                 a href="/login" logga in 
